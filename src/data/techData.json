@@ -1,0 +1,59 @@
+{
+  "sections": [
+    {
+      "title": "Implementing Industry 4.0 Solutions",
+      "image": "image1.png",
+      "items": [
+        "Smart Factory Integration",
+        "IoT Deployment and Management",
+        "Predictive Maintenance Solutions"
+      ]
+    },
+    {
+      "title": "Information / Operation Security Solutions",
+      "image": "image2.png",
+      "items": [
+        "Internal Blockchains & Quantum Encryption",
+        "Cyber Risk & Threat Management",
+        "Server Security Solutions"
+      ]
+    },
+    {
+      "title": "Software Development",
+      "image": "image1.png",
+      "items": [
+        "Development & Testing",
+        "Deployment and Support",
+        "Load testing, automation, DevOps"
+      ]
+    },
+    {
+      "title": "UI / UX and Web / Mobile Development",
+      "image": "image2.png",
+      "items": [
+        " Professional UI/UX",
+        " CustDev & Testing",
+        " Full-stack Web & Mobile Development",
+        "Analytics"
+      ]
+    },
+    {
+      "title": "Platform Solutions Integrations",
+      "image": "image1.png",
+      "items": [
+        " Adaptation & Implementation of Applications ERP, Warehouse Management, EDI, Integrated Planning, etc.",
+        "Computer Vision Applications",
+        " Competence Centers Development."
+      ]
+    },
+    {
+      "title": "Infrastructure Consulting",
+      "image": "image2.png",
+      "items": [
+        " Deployment & Operation of Secure & Efficient IT Infrastructure",
+        " Migration to Cloud-based and/or On-premise Solutions",
+        " Custom Solutions"
+      ]
+    }
+  ]
+}

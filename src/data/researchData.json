@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Dynamic Pricing with Predictive Analytics & Recommendations",
+    "image": "../assets/research1.png",
+    "tags": ["AI&ML", "Business Development"]
+  },
+  {
+    "title": "Enhanced Energy Efficiency for GPU Processing",
+    "image": "../assets/research2.png",
+    "tags": ["Business Strategy", "Optimization"]
+  },
+  {
+    "title": "Reducing Operational Costs for Large-Scale Models (LLMs)",
+    "image": "../assets/research3.png",
+    "tags": ["LLMs", "Infrastructure"]
+  },
+  {
+    "title": "Quantization and Optimization of Local LLMs",
+    "image": "../assets/research4.png",
+    "tags": ["Optimization", "Local LLM"]
+  },
+  {
+    "title": "Neural Knowledge Distillation for Edge AI",
+    "image": "../assets/research5.png",
+    "tags": ["Edge AI", "Neural Networks"]
+  }
+]

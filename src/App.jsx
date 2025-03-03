@@ -6,6 +6,8 @@ import HSBC from "./components/HSBC";
 import PortfolioSection from "./components/PortfolioSection";
 import TeamSection from "./components/TeamSection";
 import ConsultingSection from "./components/ConsultingSection";
+import TechIntegration from "./components/TechIntegration";
+import RecentResearch from "./components/RecentResearch";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <PortfolioSection />
       <TeamSection />
       <ConsultingSection />
+      <TechIntegration />
+      <RecentResearch />
     </div>
   );
 }
