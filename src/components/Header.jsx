@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/ANTEI Logo Bright.png";
 import nameLogo from "../assets/ANTEI_Logo_Name_White.png";
 
 const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Add state for mobile menu
+
+  const navItems = [
+    { name: "Home", path: "/antei-hk" },
+    { name: "Partners", path: "/antei-hk/partners" },
+    { name: "Clients", path: "/clients" },
+    { name: "Contacts", path: "/antei-hk/contactus" },
+  ];
 
   return (
     <header
@@ -15,8 +24,8 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-[180px]">
         {/* Logo with Hover Effect */}
-        <a
-          href="/"
+        <Link
+          to="/"
           className="flex items-center space-x-2"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -28,7 +37,6 @@ const Header = () => {
           >
             <img src={logo} alt="ANTEI Logo" className="w-[80px]" />
           </div>
-
           {/* Name logo appears on hover */}
           <img
             src={nameLogo}
@@ -37,21 +45,21 @@ const Header = () => {
               isHovered ? "opacity-100" : "opacity-0 w-0"
             }`}
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-8">
-          {["Home", "Partners", "Clients", "Contacts"].map((item, index) => (
-            <a
+          {navItems.map((item, index) => (
+            <Link
               key={index}
-              href="/"
-              className="relative text-white font-black text-[16px] transition-all duration-300 ease-in-out 
-                 hover:text-[#F2B44B] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] 
-                 after:bg-current after:transition-all after:duration-300 after:ease-in-out 
-                 hover:after:w-full"
+              to={item.path}
+              className="relative text-white font-black text-[16px] transition-all duration-300 ease-in-out
+                   hover:text-[#F2B44B] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px]
+                   after:bg-current after:transition-all after:duration-300 after:ease-in-out
+                   hover:after:w-full"
             >
-              {item}
-            </a>
+              {item.name}
+            </Link>
           ))}
         </nav>
 
@@ -66,6 +74,22 @@ const Header = () => {
             <span className="block h-1 w-full bg-white"></span>
           </div>
         </button>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="absolute top-full left-0 w-full bg-gradient-to-r from-[rgb(39,11,96)] to-[rgb(81,34,162)] md:hidden">
+            {navItems.map((item, index) => (
+              <Link
+                key={index}
+                to={item.path}
+                className="block px-4 py-3 text-white hover:bg-white/10"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </header>
   );

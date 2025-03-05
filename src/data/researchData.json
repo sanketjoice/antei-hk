@@ -5,23 +5,23 @@
     "tags": ["AI&ML", "Business Development"]
   },
   {
-    "title": "Enhanced Energy Efficiency for GPU Processing",
+    "title": "Quantization and Distillation of Local LLMs",
     "image": "../assets/research2.png",
-    "tags": ["Business Strategy", "Optimization"]
+    "tags": ["AI&ML", "Optimization", "local LLMs"]
   },
   {
-    "title": "Reducing Operational Costs for Large-Scale Models (LLMs)",
+    "title": "Advanced Knowledge Retrieval GraphRAG",
     "image": "../assets/research3.png",
-    "tags": ["LLMs", "Infrastructure"]
+    "tags": ["AI&ML", "Research"]
   },
   {
-    "title": "Quantization and Optimization of Local LLMs",
+    "title": "Reducing Operational Costs for Large Language Models (LLMs)",
     "image": "../assets/research4.png",
-    "tags": ["Optimization", "Local LLM"]
+    "tags": ["AI&ML", "Business strategy and Execution"]
   },
   {
-    "title": "Neural Knowledge Distillation for Edge AI",
+    "title": "Enhanced Energy Efﬁciency for Graphics (GPU) Processing",
     "image": "../assets/research5.png",
-    "tags": ["Edge AI", "Neural Networks"]
+    "tags": ["Business strategy & Execution", "Optimization"]
   }
 ]
