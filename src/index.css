@@ -1,4 +1,22 @@
 @import "tailwindcss";
+/* Custom Responsive Styles */
+@media (max-width: 768px) {
+  .PortfolioSection {
+    padding-left: 20px !important; /* Adjust padding for smaller screens */
+  }
+
+  h2 {
+    font-size: 2rem !important; /* Smaller font size for heading */
+  }
+
+  .swiper-slide {
+    width: 100% !important; /* Ensure slides take full width on smaller screens */
+  }
+
+  .custom-swiper-pagination {
+    margin-left: 0 !important; /* Adjust pagination position for smaller screens */
+  }
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

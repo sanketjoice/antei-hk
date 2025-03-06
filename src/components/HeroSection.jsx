@@ -69,7 +69,21 @@ const industries = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Check for mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Auto-rotate industries
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % industries.length);
@@ -79,39 +93,48 @@ const HeroSection = () => {
 
   return (
     <div
-      className="relative overflow-hidden mt-[-0px] text-white h-screen pl-[150px] flex items-center"
+      className="relative overflow-hidden text-white min-h-screen flex flex-col md:flex-row items-center px-4 sm:px-6 md:px-10 lg:px-32"
       style={{
         background:
           "linear-gradient(to right, rgb(2, 1, 4) 0%, rgb(39, 11, 96) 40%, rgb(72, 25, 154) 60%, rgb(81, 34, 162) 78%, rgb(43, 9, 105) 98%, rgb(41, 10, 100) 100%)",
       }}
     >
-      {/* Radial Light Effect Behind Hero Image */}
-      <div
-        className="absolute right-32 top-1/3 w-[500px] h-[500px] 
-                      bg-purple-500 opacity-40 blur-[150px] rounded-full"
-      ></div>
+      {/* Radial Light Effect */}
+      <div className="absolute right-0 md:right-10 top-1/4 md:top-1/3 w-60 h-60 md:w-96 lg:w-[500px] md:h-96 lg:h-[500px] bg-purple-500 opacity-40 blur-[100px] md:blur-[150px] rounded-full"></div>
 
       {/* Hero Content */}
-      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-12 w-full">
+      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full py-8 md:py-0">
         {/* Left Content */}
-        <div>
-          {/* "Your Vision... Realized." Section */}
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
-            Your vision... <br /> Realized.
+        <div className="text-center md:text-left z-10 order-2 md:order-1">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-wide">
+            Your vision... <br className="hidden md:block" /> Realized.
           </h1>
 
-          {/* Industry Slider (Now Below Heading) */}
-          <div className="w-full overflow-hidden mt-4">
+          {/* Industry Selector - Mobile Dropdown */}
+          <div className="md:hidden mt-6 relative">
+            <select
+              className="bg-purple-900 text-white px-4 py-2 rounded-lg w-full text-lg font-semibold"
+              value={currentIndex}
+              onChange={(e) => setCurrentIndex(parseInt(e.target.value))}
+            >
+              {industries.map((industry, index) => (
+                <option key={industry.name} value={index}>
+                  {industry.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Industry Slider - Desktop Only */}
+          <div className="hidden md:block w-full overflow-hidden mt-4">
             <div
-              className="flex transition-transform duration-2000 ease-in-out items-start"
-              style={{
-                transform: `translateX(-${currentIndex * 150}px)`, // Moves slider dynamically
-              }}
+              className="flex transition-transform duration-2000 ease-in-out items-start justify-start"
+              style={{ transform: `translateX(-${currentIndex * 150}px)` }}
             >
               {industries.map((industry, index) => (
                 <div
                   key={industry.name}
-                  className={`text-2xl font-semibold uppercase whitespace-nowrap px-4 py-2 transition-all cursor-pointer ${
+                  className={`text-lg md:text-xl lg:text-2xl font-semibold uppercase whitespace-nowrap px-2 md:px-4 py-1 md:py-2 cursor-pointer transition-all ${
                     index === currentIndex
                       ? "text-[#FF9E00] opacity-100 scale-110"
                       : "text-gray-400 opacity-60 hover:opacity-100"
@@ -124,27 +147,27 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Industry Description (Now Below the Slider) */}
+          {/* Industry Description */}
           <motion.p
-            key={currentIndex} // Ensures animation runs on change
-            initial={{ opacity: 0, y: 10 }} // Starts slightly lower and transparent
-            animate={{ opacity: 1, y: 0 }} // Fades in and moves up smoothly
-            exit={{ opacity: 0, y: -10 }} // Fades out while moving up slightly
-            transition={{ duration: 0.5, ease: "easeOut" }} // Smooth timing
-            className="text-[26px] mt-6 text-gray-300 max-w-md"
+            key={currentIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl mt-4 text-gray-300 max-w-full sm:max-w-md mx-auto md:mx-0"
           >
             {industries[currentIndex].description}
           </motion.p>
         </div>
 
         {/* Right: Hero Image */}
-        <div className="relative w-120 flex justify-center items-center">
+        <div className="relative flex justify-center items-center w-full md:w-auto h-56 sm:h-64 md:h-auto order-1 md:order-2">
           {industries.map((industry, index) => (
             <img
               key={industry.name}
               src={industry.img}
               alt={industry.name}
-              className={`absolute transition-opacity duration-1000 ${
+              className={`absolute max-h-48 sm:max-h-60 md:max-h-80 lg:max-h-96 transition-opacity duration-1000 ${
                 index === currentIndex ? "opacity-100 scale-105" : "opacity-0"
               }`}
             />

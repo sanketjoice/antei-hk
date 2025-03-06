@@ -29,26 +29,54 @@ const RecentResearch = () => {
   };
 
   return (
-    <div className="bg-black px-36 text-white py-12 text-cer">
-      <h2 className="text-4xl font-semibold mb-12 border-b-2 border-yellow-500 inline-block">
+    <div className="bg-black px-4 sm:px-12 md:px-36 text-white py-8 md:py-12 text-cer">
+      <h2 className="text-2xl md:text-4xl font-semibold mb-6 md:mb-12 border-b-2 border-yellow-500 inline-block">
         Recent Research
       </h2>
-      <div className="relative flex justify-center items-center overflow-hidden mt-8 h-96">
+
+      {/* Mobile-only navigation controls */}
+      <div className="flex justify-center gap-4 mb-4 md:hidden">
+        <button
+          className="bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+          onClick={() =>
+            setActiveIndex(
+              (activeIndex - 1 + researchData.length) % researchData.length
+            )
+          }
+        >
+          &lt;
+        </button>
+        <button
+          className="bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+          onClick={() =>
+            setActiveIndex((activeIndex + 1) % researchData.length)
+          }
+        >
+          &gt;
+        </button>
+      </div>
+
+      <div className="relative flex justify-center items-center overflow-hidden mt-4 md:mt-8 h-64 md:h-96">
         {researchData.map((item, index) => {
           const isActive = index === activeIndex;
           const position = getPosition(index);
 
+          // Mobile: only show active card
+          // Desktop: show all cards as in original code
+          const translateX = position * 200;
+          const scale = isActive ? 1.05 : 0.9;
+
           return (
             <div
               key={index}
-              className={`absolute w-72 h-96 rounded-lg overflow-hidden transition-all duration-500 cursor-pointer ${
+              className={`absolute w-64 md:w-72 h-64 md:h-96 rounded-lg overflow-hidden transition-all duration-500 cursor-pointer ${
                 isActive
                   ? "z-20 scale-105 opacity-100 blur-none"
-                  : "z-10 scale-90 opacity-80 blur-sm"
+                  : "z-10 scale-90 opacity-80 blur-sm hidden md:block"
               }`}
               style={{
-                transform: `translateX(${position * 200}px) scale(${
-                  isActive ? 1 : 0.9
+                transform: `translateX(${translateX}px) scale(${
+                  isActive ? scale : 0.9
                 })`,
               }}
               onClick={() => handleClick(index)}
@@ -58,9 +86,9 @@ const RecentResearch = () => {
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-bl k bg-opacity-50 flex flex-col justify-start p-4">
-                <h3 className="text-xl font-bold">{item.title}</h3>
-                <div className="flex gap-2 mt-2">
+              <div className="absolute inset-0  bg-opacity-50 flex flex-col justify-start p-4">
+                <h3 className="text-lg md:text-xl font-bold">{item.title}</h3>
+                <div className="flex flex-wrap gap-2 mt-2">
                   {item.tags.map((tag, i) => (
                     <span
                       key={i}
@@ -75,6 +103,7 @@ const RecentResearch = () => {
           );
         })}
       </div>
+
       <Link to="/antei-hk/contactus">
         <button className="mt-6 flex justify-center m-auto border-4 border-[#E6AC00] text-[#E6AC00] px-6 py-2 rounded-lg text-lg font-semibold hover:cursor-pointer transition-all w-[260px]">
           Learn More

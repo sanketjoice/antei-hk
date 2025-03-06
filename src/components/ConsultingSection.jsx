@@ -28,18 +28,18 @@ export default function ConsultingSection() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center pt-10 pl-[140px] justify-between bg-black text-white p-10">
+    <div className="flex flex-col md:flex-row items-center bg-black text-white p-4 sm:p-6 md:p-8 lg:p-10 md:pl-8 lg:pl-[140px]">
       {/* Left Side - Title and List */}
-      <div className="w-full md:w-1/2">
-        <h2 className="text-4xl font-semibold mb-6">
+      <div className="w-full md:w-1/2 mb-6 md:mb-0">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 md:mb-6">
           Strategic & Technological Consulting
-          <span className="block w-[600px] h-0.5 bg-yellow-500 mt-2"></span>
+          <span className="block w-full sm:w-3/4 md:w-[600px] h-0.5 bg-yellow-500 mt-2"></span>
         </h2>
-        <div className="space-y-4 mt-7">
+        <div className="space-y-2 sm:space-y-3 md:space-y-4 mt-4 md:mt-7">
           {strategies.map((item, index) => (
             <div
               key={index}
-              className={`flex items-center gap-6 w-[595px] h-[90px] p-4 border border-[#9b9b9b] cursor-pointer transition-all duration-300 ${
+              className={`flex items-center gap-3 sm:gap-4 md:gap-6 w-full md:w-[95%] lg:w-[595px] h-auto min-h-[60px] sm:min-h-[70px] md:min-h-[90px] p-3 sm:p-4 border border-[#9b9b9b] cursor-pointer transition-all duration-300 ${
                 selectedIndex === index
                   ? "bg-yellow-500 text-black"
                   : "bg-black"
@@ -48,26 +48,29 @@ export default function ConsultingSection() {
                 setSelectedIndex(index === selectedIndex ? null : index)
               }
             >
-              <span className="text-[32px] font-bold mb-2">
+              <span className="text-xl sm:text-2xl md:text-[32px] font-bold">
                 {selectedIndex === index ? "-" : "+"}
               </span>
-              <span className="text-lg font-bold">{item}</span>
+              <span className="text-base sm:text-lg font-bold">{item}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Right Side - Image with Overlay and Content */}
-      <div className="relative w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
+      <div className="relative w-full md:w-1/2 flex justify-center">
         <img
           src={rightImg}
           alt="Tech Consulting"
-          className="w-[600px] h-[600px] md:w-4/5 object-cover opacity-70"
+          className="w-full max-w-[400px] sm:max-w-[500px] md:w-4/5 md:max-w-[600px] h-auto aspect-square object-cover opacity-70"
         />
         {selectedIndex !== null && (
-          <div className="absolute top-0 left-0 w-full h-full bg-opacity-5 flex flex-col items-center justify-center p-6">
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25 flex flex-col items-center justify-center p-4 sm:p-6">
             {strategyDetails[selectedIndex]?.map((detail, i) => (
-              <div key={i} className="text-white text-lg font-semibold mt-4">
+              <div
+                key={i}
+                className="text-white text-base sm:text-lg font-semibold mt-3 sm:mt-4 p-2 text-center"
+              >
                 {detail.text}
               </div>
             ))}

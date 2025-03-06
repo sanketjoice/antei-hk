@@ -57,16 +57,17 @@ export default function TeamSection() {
   const [selectedTeam, setSelectedTeam] = useState(teamData[0]);
 
   return (
-    <div className="flex flex-col pl-[150px] md:flex-row items-start gap-10 pt-[70px] p-10 bg-black text-white">
+    <div className="flex flex-col lg:flex-row items-start gap-10 pt-16 p-4 md:p-10 lg:pl-32 bg-black text-white">
       {/* Left Side: Team Categories */}
-      <div className="flex flex-col gap-4 w-1/3">
-        <h2 className="text-4xl font-semibold mb-0">Our Team</h2>
-        <div className="w-[158px] h-[3px] bg-yellow-500 mb-9"></div>
+      <div className="flex flex-col gap-4 w-full lg:w-1/3">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-0">Our Team</h2>
+        <div className="w-32 h-1 bg-yellow-500 mb-6 md:mb-9"></div>
         {teamData.map((team, index) => (
           <button
             key={index}
+            onClick={() => setSelectedTeam(team)}
             onMouseEnter={() => setSelectedTeam(team)}
-            className={`text-xl font-bold text-left px-4 py-3 rounded-md transition-all duration-300 ${
+            className={`text-lg md:text-xl font-bold text-left px-4 py-3 rounded-md transition-all duration-300 ${
               selectedTeam.title === team.title
                 ? "bg-yellow-500"
                 : "hover:text-yellow-500"
@@ -78,22 +79,22 @@ export default function TeamSection() {
       </div>
 
       {/* Right Side: Image & Description */}
-      <div className="w-2/3 ml-[150px] mt-[100px] flex flex-col">
+      <div className="w-full lg:w-2/3 mt-8 lg:mt-24 lg:ml-16 flex flex-col">
         {/* Image */}
         <img
           src={selectedTeam.image}
           alt={selectedTeam.title}
-          className="w-[550px] h-[300px] object-cover rounded-xl transition-all duration-500"
+          className="w-full md:w-4/5 lg:w-[550px] h-auto md:h-64 lg:h-[300px] object-cover rounded-xl transition-all duration-500"
         />
 
         {/* Description */}
-        <p className="mt-6 w-[500px] h-[54px] text-lg leading-relaxed">
+        <p className="mt-6 w-full md:w-4/5 lg:w-[500px] text-base md:text-lg leading-relaxed">
           {selectedTeam.description}
         </p>
 
         {/* Learn More */}
         <Link to="/antei-hk/contactus">
-          <p className="mt-20 text-gray-400 cursor-pointer hover:text-white transition-all duration-300">
+          <p className="mt-10 lg:mt-20 text-gray-400 cursor-pointer hover:text-white transition-all duration-300">
             Learn more
           </p>
         </Link>
