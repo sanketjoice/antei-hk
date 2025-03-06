@@ -15,6 +15,9 @@ import PartnersSectionHero from "./components/PartnersSectionHero";
 import InquirySection from "./components/InquirySection";
 import ContactUs from "./components/ContactUs";
 import GetInTouchForm from "./components/GetInTouchForm";
+import ClientsHeroSection from "./components/ClientsHeroSection";
+import AccordionSection from "./components/AccordionSection";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Create page components
 const HomePage = () => (
@@ -47,17 +50,25 @@ const ContactPage = () => (
   </>
 );
 
+const ClientsPage = () => (
+  <>
+    <ClientsHeroSection />
+    <AccordionSection />
+    <Footer />
+  </>
+);
+
 function App() {
   return (
     <Router>
-      <div>
-        <Header />
-        <Routes>
-          <Route path="/antei-hk" element={<HomePage />} />
-          <Route path="/antei-hk/partners" element={<PartnersPage />} />
-          <Route path="/antei-hk/contactus" element={<ContactPage />} />
-        </Routes>
-      </div>
+      <ScrollToTop /> {/* Ensures scroll resets on route change */}
+      <Header />
+      <Routes>
+        <Route path="/antei-hk" element={<HomePage />} />
+        <Route path="/antei-hk/partners" element={<PartnersPage />} />
+        <Route path="/antei-hk/contactus" element={<ContactPage />} />
+        <Route path="/antei-hk/clients" element={<ClientsPage />} />
+      </Routes>
     </Router>
   );
 }

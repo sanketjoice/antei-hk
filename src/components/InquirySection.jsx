@@ -5,7 +5,7 @@ import img3 from "../assets/inquiry3.png";
 import logo1 from "../assets/agent_icon.png";
 import logo2 from "../assets/partners_icon.png";
 import logo3 from "../assets/white_label_icon.png";
-
+import { Link } from "react-router-dom";
 const InquirySection = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -112,15 +112,16 @@ const InquirySection = () => {
                   </li>
                 ))}
               </ul>
-
-              <div className="relative mt-20 overflow-hidden">
-                <button className="relative w-full py-2 bg-white text-black border border-black rounded-lg overflow-hidden group">
-                  <span className="absolute inset-0 bg-yellow-500 w-0 group-hover:w-full transition-all duration-500 ease-out"></span>
-                  <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-                    Inquire
-                  </span>
-                </button>
-              </div>
+              <Link to="/antei-hk/contactus">
+                <div className="relative mt-20 overflow-hidden">
+                  <button className="relative w-full py-2 bg-white text-black border border-black rounded-lg overflow-hidden group">
+                    <span className="absolute inset-0 bg-yellow-500 w-0 group-hover:w-full transition-all duration-500 ease-out"></span>
+                    <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                      Inquire
+                    </span>
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
         ))}

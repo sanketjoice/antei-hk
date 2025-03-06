@@ -1,6 +1,6 @@
 import { useState } from "react";
 import researchData from "../data/researchData.json";
-
+import { Link } from "react-router-dom";
 import img1 from "../assets/technology-6701504_1280-ALpoJvpDWDTM4J11.png";
 import img2 from "../assets/binary-code-7190628_1280-mxB7rQB0VyHV6LGG.png";
 import img3 from "../assets/artificial-intelligence-3382507_1280-AQEpJ1EG5rcZqo4K.png";
@@ -75,9 +75,11 @@ const RecentResearch = () => {
           );
         })}
       </div>
-      <button className="mt-6 flex justify-center m-auto border-4 border-[#E6AC00] text-[#E6AC00] px-6 py-2 rounded-lg text-lg font-semibold hover:cursor-pointer transition-all w-[260px]">
-        Learn More
-      </button>
+      <Link to="/antei-hk/contactus">
+        <button className="mt-6 flex justify-center m-auto border-4 border-[#E6AC00] text-[#E6AC00] px-6 py-2 rounded-lg text-lg font-semibold hover:cursor-pointer transition-all w-[260px]">
+          Learn More
+        </button>
+      </Link>
     </div>
   );
 };

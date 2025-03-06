@@ -1,6 +1,7 @@
 import React from "react";
 import anteiLogo from "../assets/ANTEI_Logo_Name_White.png";
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -12,18 +13,16 @@ export default function Footer() {
             <img src={anteiLogo} alt="Antei Logo" className="h-9" />
           </a>
           <nav className="flex space-x-50 text-xl">
-            <a
-              href="https://anteihk.com/contacts.html"
-              className="hover:text-[#FFA500] text-[5F5F5F] underline transition"
-            >
-              CONTACTS
-            </a>
-            <a
-              href="https://anteihk.com/locations.html"
-              className="hover:text-[#FFA500] transition underline text-"
-            >
-              LOCATIONS
-            </a>
+            <Link to="/antei-hk/contactus">
+              <a className="hover:text-[#FFA500] text-[5F5F5F] underline transition">
+                CONTACTS
+              </a>
+            </Link>
+            <Link to="/antei-hk/contactus">
+              <a className="hover:text-[#FFA500] transition underline text-">
+                LOCATIONS
+              </a>
+            </Link>
           </nav>
           <a
             href="https://www.linkedin.com/company/antei-limited/"
@@ -39,22 +38,9 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-wrap justify-center space-x-40 text-md">
-          <a
-            href="https://anteihk.com/privacy-statement.html"
-            className="hover:text-[#FFA500] transition"
-          >
-            Privacy Statement
-          </a>
-          <a
-            href="https://anteihk.com/terms-and-conditions.html"
-            className="hover:text-[#FFA500] transition"
-          >
-            Terms & Conditions
-          </a>
-          <a
-            href="https://anteihk.com/cookie-policy.html"
-            className="hover:text-[#FFA500] transition"
-          >
+          <a className="hover:text-[#FFA500] transition">Privacy Statement</a>
+          <a className="hover:text-[#FFA500] transition">Terms & Conditions</a>
+          <a className="hover:text-[#FFA500] transition">
             Cookie Policy/Settings
           </a>
           <span>Copyright © 2025 ANTEI Limited</span>

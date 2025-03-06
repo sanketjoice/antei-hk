@@ -6,6 +6,7 @@ import strategy from "../assets/strategy.png";
 import RandD from "../assets/rnd.png";
 import trade from "../assets/trade.png";
 import industry from "../assets/industry_experts.png";
+import { Link } from "react-router-dom";
 
 const teamData = [
   {
@@ -91,9 +92,11 @@ export default function TeamSection() {
         </p>
 
         {/* Learn More */}
-        <p className="mt-20 text-gray-400 cursor-pointer hover:text-white transition-all duration-300">
-          Learn more
-        </p>
+        <Link to="/antei-hk/contactus">
+          <p className="mt-20 text-gray-400 cursor-pointer hover:text-white transition-all duration-300">
+            Learn more
+          </p>
+        </Link>
       </div>
     </div>
   );
