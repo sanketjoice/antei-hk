@@ -60,16 +60,18 @@ const ClientsPage = () => (
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop /> {/* Ensures scroll resets on route change */}
-      <Header />
-      <Routes>
-        <Route path="/antei-hk" element={<HomePage />} />
-        <Route path="/antei-hk/partners" element={<PartnersPage />} />
-        <Route path="/antei-hk/contactus" element={<ContactPage />} />
-        <Route path="/antei-hk/clients" element={<ClientsPage />} />
-      </Routes>
-    </Router>
+    <div className="max-w-[1660px] m-auto">
+      <Router>
+        <ScrollToTop />
+        <Header />
+        <Routes>
+          <Route path="/antei-hk" element={<HomePage />} />
+          <Route path="/antei-hk/partners" element={<PartnersPage />} />
+          <Route path="/antei-hk/contactus" element={<ContactPage />} />
+          <Route path="/antei-hk/clients" element={<ClientsPage />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

@@ -41,11 +41,18 @@ const ClientsHeroSection = () => {
         } w-full`}
       >
         {isMobile && (
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-20">
             <img
               src={handShake}
               alt="Client Program Handshake"
-              className="w-64 h-64 object-contain z-10"
+              style={{
+                width: "70vw",
+                height: "auto",
+                objectFit: "contain",
+                maxWidth: "400px",
+                transform: "scale(1.8)",
+                zIndex: 10,
+              }}
             />
           </div>
         )}

@@ -22,76 +22,97 @@ const PartnersSectionHero = () => {
     };
   }, []);
 
+  // Mobile layout completely restructured
+  if (isMobile) {
+    return (
+      <div
+        className="relative overflow-hidden text-white h-screen flex flex-col justify-between"
+        style={{
+          background:
+            "linear-gradient(to right, rgb(2, 1, 4) 0%, rgb(39, 11, 96) 40%, rgb(72, 25, 154) 60%, rgb(81, 34, 162) 78%, rgb(43, 9, 105) 98%, rgb(41, 10, 100) 100%)",
+        }}
+      >
+        {/* Radial Light Effect */}
+        <div className="absolute inset-0 w-full h-full bg-purple-500 opacity-40 blur-[150px] rounded-full"></div>
+
+        {/* Logo/Header Area */}
+        <div className="relative pt-8 px-6">
+          {/* Your logo or header elements can go here */}
+        </div>
+
+        {/* Giant Handshake Image - Takes up most of the screen */}
+        <div
+          className="relative flex justify-center items-center"
+          style={{ height: "50vh" }}
+        >
+          <img
+            src={handShake}
+            alt="Partnership Handshake"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              maxWidth: "none",
+              transform: "scale(1.8)",
+              zIndex: 10,
+            }}
+          />
+        </div>
+
+        {/* Text Content at Bottom */}
+        <div className="relative text-center px-6 pb-12 z-10">
+          <h1 className="text-4xl font-bold leading-tight tracking-wide mb-4">
+            ANTEI Partner <br /> Program
+          </h1>
+
+          <p className="text-lg text-gray-300">
+            Join us to become a driving force for meaningful change. Contribute
+            to creating tangible value and shaping a highly efficient innovative
+            future.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop layout remains unchanged
   return (
     <div
-      className={`relative overflow-hidden text-white ${
-        isMobile ? "h-screen" : "h-screen pl-[150px]"
-      } flex items-center`}
+      className="relative overflow-hidden text-white h-screen pl-[150px] flex items-center"
       style={{
         background:
           "linear-gradient(to right, rgb(2, 1, 4) 0%, rgb(39, 11, 96) 40%, rgb(72, 25, 154) 60%, rgb(81, 34, 162) 78%, rgb(43, 9, 105) 98%, rgb(41, 10, 100) 100%)",
       }}
     >
       {/* Radial Light Effect Behind Image */}
-      <div
-        className={`absolute ${isMobile ? "inset-0" : "right-32 top-1/3"} 
-                  ${isMobile ? "w-full h-full" : "w-[500px] h-[500px]"}
-                  bg-purple-500 opacity-40 blur-[150px] rounded-full`}
-      ></div>
+      <div className="absolute right-32 top-1/3 w-[500px] h-[500px] bg-purple-500 opacity-40 blur-[150px] rounded-full"></div>
 
       {/* Partners Content */}
-      <section
-        className={`relative ${
-          isMobile
-            ? "flex flex-col justify-center px-6"
-            : "grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-12"
-        } w-full`}
-      >
-        {/* Mobile Image (Only for mobile) */}
-        {isMobile && (
-          <div className="flex justify-center mb-8">
-            <img
-              src={handShake}
-              alt="Partnership Handshake"
-              className="w-64 h-64 object-contain z-10"
-            />
-          </div>
-        )}
-
+      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-12 w-full">
         {/* Content */}
-        <div className={`${isMobile ? "text-center" : ""}`}>
-          <h1
-            className={`${
-              isMobile ? "text-4xl" : "text-5xl md:text-7xl"
-            } font-bold leading-tight tracking-wide`}
-          >
+        <div>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
             ANTEI Partner <br /> Program
           </h1>
 
-          <p
-            className={`${
-              isMobile ? "text-lg mt-4" : "text-[26px] mt-30"
-            } text-gray-300 ${isMobile ? "mx-auto" : "max-w-xl"}`}
-          >
+          <p className="text-[26px] mt-30 text-gray-300 max-w-xl">
             Join us to become a driving force for meaningful change. Contribute
             to creating tangible value and shaping a highly efficient innovative
             future.
           </p>
         </div>
 
-        {/* Desktop: Handshake Image (Hidden on mobile) */}
-        {!isMobile && (
-          <div className="relative flex justify-center items-center">
-            <div className="w-full flex justify-center">
-              <div className="w-[400px] h-[400px] bg-purple-500/20 blur-[150px] absolute rounded-full"></div>
-              <img
-                src={handShake}
-                alt="Partnership Handshake"
-                className="relative z-10 ml-[-100px] w-[1000px] max-w-none h-auto object-contain"
-              />
-            </div>
+        {/* Desktop: Handshake Image */}
+        <div className="relative flex justify-center items-center">
+          <div className="w-full flex justify-center">
+            <div className="w-[400px] h-[400px] bg-purple-500/20 blur-[150px] absolute rounded-full"></div>
+            <img
+              src={handShake}
+              alt="Partnership Handshake"
+              className="relative z-10 ml-[-100px] w-[1000px] max-w-none h-auto object-contain"
+            />
           </div>
-        )}
+        </div>
       </section>
     </div>
   );

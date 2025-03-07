@@ -69,19 +69,6 @@ const industries = [
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check for mobile viewport
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // Auto-rotate industries
   useEffect(() => {
@@ -93,43 +80,35 @@ const HeroSection = () => {
 
   return (
     <div
-      className="relative overflow-hidden text-white min-h-screen flex flex-col md:flex-row items-center px-4 sm:px-6 md:px-10 lg:px-32"
+      className="relative overflow-hidden h-auto text-white flex flex-col items-center py-22 lg:py-52 px-4 sm:px-6 md:px-10 lg:px-32"
       style={{
-        background:
-          "linear-gradient(to right, rgb(2, 1, 4) 0%, rgb(39, 11, 96) 40%, rgb(72, 25, 154) 60%, rgb(81, 34, 162) 78%, rgb(43, 9, 105) 98%, rgb(41, 10, 100) 100%)",
+        background: "rgb(2, 1, 4)",
       }}
     >
-      {/* Radial Light Effect */}
-      <div className="absolute right-0 md:right-10 top-1/4 md:top-1/3 w-60 h-60 md:w-96 lg:w-[500px] md:h-96 lg:h-[500px] bg-purple-500 opacity-40 blur-[100px] md:blur-[150px] rounded-full"></div>
+      {/* Circular Gradient Background */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          background:
+            "radial-gradient(circle at 75% 50%, rgb(120, 60, 220) 0%, rgb(81, 34, 162) 30%, rgb(39, 11, 96) 60%, rgb(2, 1, 4) 100%)",
+        }}
+      ></div>
 
       {/* Hero Content */}
-      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full py-8 md:py-0">
+      <section className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full py-8 md:py-0 h-full">
         {/* Left Content */}
-        <div className="text-center md:text-left z-10 order-2 md:order-1">
+        <div className="text-left md:text-left z-10 order-2 md:order-1">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-wide">
-            Your vision... <br className="hidden md:block" /> Realized.
+            Your vision... <br className="hi md:block" /> Realized.
           </h1>
 
-          {/* Industry Selector - Mobile Dropdown */}
-          <div className="md:hidden mt-6 relative">
-            <select
-              className="bg-purple-900 text-white px-4 py-2 rounded-lg w-full text-lg font-semibold"
-              value={currentIndex}
-              onChange={(e) => setCurrentIndex(parseInt(e.target.value))}
-            >
-              {industries.map((industry, index) => (
-                <option key={industry.name} value={index}>
-                  {industry.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Industry Slider - Desktop Only */}
-          <div className="hidden md:block w-full overflow-hidden mt-4">
+          {/* Industry Slider - For both Mobile and Desktop */}
+          <div className="w-full overflow-hidden mt-4">
             <div
-              className="flex transition-transform duration-2000 ease-in-out items-start justify-start"
-              style={{ transform: `translateX(-${currentIndex * 150}px)` }}
+              className="flex transition-transform duration-2000 ease-in-out items-start"
+              style={{
+                transform: `translateX(calc(50% - ${currentIndex * 120}px))`,
+              }}
             >
               {industries.map((industry, index) => (
                 <div
@@ -162,6 +141,19 @@ const HeroSection = () => {
 
         {/* Right: Hero Image */}
         <div className="relative flex justify-center items-center w-full md:w-auto h-56 sm:h-64 md:h-auto order-1 md:order-2">
+          {/* Circular Glow Effect positioned exactly behind the image */}
+          <div
+            className="absolute"
+            style={{
+              width: "350px",
+              height: "350px",
+              background:
+                "radial-gradient(circle, rgba(180, 120, 255, 0.8) 0%, rgba(130, 70, 230, 0.5) 50%, rgba(81, 34, 162, 0.2) 80%, transparent 100%)",
+              filter: "blur(40px)",
+              zIndex: "1",
+            }}
+          ></div>
+
           {industries.map((industry, index) => (
             <img
               key={industry.name}
@@ -170,6 +162,7 @@ const HeroSection = () => {
               className={`absolute max-h-48 sm:max-h-60 md:max-h-80 lg:max-h-96 transition-opacity duration-1000 ${
                 index === currentIndex ? "opacity-100 scale-105" : "opacity-0"
               }`}
+              style={{ zIndex: "2" }}
             />
           ))}
         </div>

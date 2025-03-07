@@ -31,13 +31,9 @@ const Header = () => {
 
   return (
     <header
-      className={`text-white fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "py-2 shadow-lg" : "pt-2"
+      className={`text-white fixed max-w-[1660px] m-auto top-0 z-50 w-full transition-all duration-300 ${
+        scrolled ? "py-2 backdrop-blur-sm bg-black/30" : "pt-2 bg-transparent"
       }`}
-      style={{
-        background:
-          "linear-gradient(to right, rgb(2, 1, 4) 0%, rgb(39, 11, 96) 40%, rgb(72, 25, 154) 60%, rgb(81, 34, 162) 78%, rgb(43, 9, 105) 98%, rgb(41, 10, 100) 100%)",
-      }}
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-32">
         <Link
@@ -73,7 +69,7 @@ const Header = () => {
               key={index}
               to={item.path}
               className="relative text-white font-black text-sm lg:text-base transition-all duration-300 ease-in-out
-                   hover:text-[#F2B44B] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px]
+                   hover:text-[#FF9E00] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px]
                    after:bg-current after:transition-all after:duration-300 after:ease-in-out
                    hover:after:w-full"
             >
@@ -110,7 +106,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute top-full left-0 w-full bg-gradient-to-r from-[rgb(39,11,96)] to-[rgb(81,34,162)]
+        className={`absolute top-full left-0 w-full bg-black/80 backdrop-blur-md
         transition-all duration-300 ease-in-out transform ${
           isOpen
             ? "max-h-64 opacity-100 shadow-xl"

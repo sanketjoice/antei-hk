@@ -230,24 +230,30 @@ export default function AccordionSection() {
               onClick={() => toggleSection(index)}
             >
               <span className="font-bold flex items-center">
+                {/* Mobile view - only show titles */}
+                <span className="sm:hidden group-hover:text-yellow-500 transition">
+                  {section.title}
+                </span>
+
+                {/* Desktop view - show step numbers and images */}
                 {index < 2 ? (
-                  <>
+                  <span className="hidden sm:inline">
                     STEP {index + 1}{" "}
-                    <span className="ml-4 sm:ml-16 group-hover:text-yellow-500 transition">
+                    <span className="ml-16 group-hover:text-yellow-500 transition">
                       {section.title}
                     </span>
-                  </>
+                  </span>
                 ) : (
-                  <>
+                  <span className="hidden sm:flex items-center">
                     <img
                       src={section.icon}
                       alt={`Step ${index + 1}`}
-                      className="h-8 w-8 sm:h-10 sm:w-10 object-contain mr-2 sm:mr-4"
+                      className="h-10 w-10 object-contain mr-4"
                     />
-                    <span className="ml-2 sm:ml-26 group-hover:text-yellow-500 transition">
+                    <span className="group-hover:text-yellow-500 lg:ml-26 transition">
                       {section.title}
                     </span>
-                  </>
+                  </span>
                 )}
               </span>
               <span className="text-white">

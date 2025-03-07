@@ -49,12 +49,9 @@ const InquirySection = () => {
 
   return (
     <>
-      {/* Desktop view uses the exact same classes as the original */}
+      {/* Desktop view */}
       <div className="bg-black py-10 pt-[130px] px-40 text-center md:block hidden">
-        {/* Gradient line */}
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
-
-        {/* Heading */}
         <h2 className="text-white text-3xl font-semibold mt-20">
           Choose the most suitable model for your business
         </h2>
@@ -63,11 +60,10 @@ const InquirySection = () => {
         {partners.map((partner, index) => (
           <div
             key={index}
-            className="relative w-96"
+            className="relative w-96 flex flex-col"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            {/* Top image background - full height and wider */}
             <div className="relative w-[380px] rounded-xl h-100 overflow-hidden">
               <img
                 src={partner.backgroundImage}
@@ -89,9 +85,7 @@ const InquirySection = () => {
               </div>
             </div>
 
-            {/* White card with overlap */}
-            <div className="relative bg-white rounded-lg shadow-lg -mt-8 pt-12 pb-6 px-4 z-10 w-80 mx-auto border-2 border-transparent">
-              {/* Circular logo spanning top image and white card */}
+            <div className="relative bg-white rounded-lg shadow-lg -mt-8 pt-12 pb-6 px-4 z-10 w-80 mx-auto border-2 border-transparent flex flex-col flex-grow">
               <div
                 className={`absolute left-1/2 transform -translate-x-1/2 -top-13 w-24 h-24 bg-white rounded-full flex items-center justify-center border-4 border-purple-600 shadow-md`}
               >
@@ -106,7 +100,7 @@ const InquirySection = () => {
                 {partner.title}
               </h3>
 
-              <ul className="text-md text-black space-y-2 mb-6">
+              <ul className="text-md text-black space-y-2 mb-6 flex-grow">
                 {partner.details.map((detail, idx) => (
                   <li key={idx} className="flex">
                     <span className="mr-2">➠</span>
@@ -115,7 +109,7 @@ const InquirySection = () => {
                 ))}
               </ul>
               <Link to="/antei-hk/contactus">
-                <div className="relative mt-20 overflow-hidden">
+                <div className="relative mt-4 overflow-hidden">
                   <button className="relative w-full py-2 bg-white text-black border border-black rounded-lg overflow-hidden group">
                     <span className="absolute inset-0 bg-yellow-500 w-0 group-hover:w-full transition-all duration-500 ease-out"></span>
                     <span className="relative z-10 group-hover:text-black transition-colors duration-300">
@@ -129,12 +123,9 @@ const InquirySection = () => {
         ))}
       </div>
 
-      {/* Mobile view with responsive styling */}
+      {/* Mobile view */}
       <div className="bg-black py-10 pt-16 px-4 text-center md:hidden">
-        {/* Gradient line */}
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
-
-        {/* Heading */}
         <h2 className="text-white text-2xl font-semibold mt-8">
           Choose the most suitable model for your business
         </h2>
@@ -143,11 +134,10 @@ const InquirySection = () => {
         {partners.map((partner, index) => (
           <div
             key={index}
-            className="relative w-full max-w-xs"
+            className="relative w-full max-w-xs flex flex-col"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            {/* Top image background - full height and wider */}
             <div className="relative w-full rounded-xl h-64 overflow-hidden">
               <img
                 src={partner.backgroundImage}
@@ -169,9 +159,7 @@ const InquirySection = () => {
               </div>
             </div>
 
-            {/* White card with overlap */}
-            <div className="relative bg-white rounded-lg shadow-lg -mt-8 pt-12 pb-6 px-4 z-10 w-full mx-auto border-2 border-transparent">
-              {/* Circular logo spanning top image and white card */}
+            <div className="relative bg-white rounded-lg shadow-lg -mt-8 pt-12 pb-6 px-4 z-10 w-full mx-auto border-2 border-transparent flex flex-col flex-grow">
               <div
                 className={`absolute left-1/2 transform -translate-x-1/2 -top-12 w-20 h-20 bg-white rounded-full flex items-center justify-center border-4 border-purple-600 shadow-md`}
               >
@@ -186,7 +174,7 @@ const InquirySection = () => {
                 {partner.title}
               </h3>
 
-              <ul className="text-sm text-black space-y-2 mb-6">
+              <ul className="text-sm text-black space-y-2 mb-6 flex-grow">
                 {partner.details.map((detail, idx) => (
                   <li key={idx} className="flex">
                     <span className="mr-2">➠</span>
@@ -195,7 +183,7 @@ const InquirySection = () => {
                 ))}
               </ul>
               <Link to="/antei-hk/contactus" className="block">
-                <div className="relative mt-12 overflow-hidden">
+                <div className="relative mt-4 overflow-hidden">
                   <button className="relative w-full py-2 bg-white text-black border border-black rounded-lg overflow-hidden group">
                     <span className="absolute inset-0 bg-yellow-500 w-0 group-hover:w-full transition-all duration-500 ease-out"></span>
                     <span className="relative z-10 group-hover:text-black transition-colors duration-300">

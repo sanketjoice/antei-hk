@@ -37,7 +37,14 @@ const ContactUs = () => {
             <img
               src={envelopeImage}
               alt="Envelope Icon"
-              className="relative z-10 w-[300px] md:w-[900px] max-w-none h-auto object-contain"
+              style={{
+                width: "80vw", // Adjust width dynamically for responsiveness
+                height: "auto", // Maintain aspect ratio
+                objectFit: "contain",
+                maxWidth: "400px", // Prevent excessive scaling
+                transform: "scale(1.8)", // Enlarge image
+                zIndex: 10,
+              }}
             />
           </div>
         </div>
