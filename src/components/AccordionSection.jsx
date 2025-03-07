@@ -20,7 +20,7 @@ function DeploymentOptions() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div
           className={`border border-white p-4 text-center cursor-pointer ${
             selectedOption === "cloud" ? "border-purple-500" : ""
@@ -28,7 +28,7 @@ function DeploymentOptions() {
           onClick={() => setSelectedOption("cloud")}
         >
           <h3
-            className={`text-xl font-bold mb-2 ${
+            className={`text-lg sm:text-xl font-bold mb-2 ${
               selectedOption === "cloud" ? "text-purple-500" : ""
             }`}
           >
@@ -42,7 +42,7 @@ function DeploymentOptions() {
           onClick={() => setSelectedOption("onpremise")}
         >
           <h3
-            className={`text-xl font-bold mb-2 ${
+            className={`text-lg sm:text-xl font-bold mb-2 ${
               selectedOption === "onpremise" ? "text-purple-500" : ""
             }`}
           >
@@ -56,7 +56,7 @@ function DeploymentOptions() {
           onClick={() => setSelectedOption("hybrid")}
         >
           <h3
-            className={`text-xl font-bold mb-2 ${
+            className={`text-lg sm:text-xl font-bold mb-2 ${
               selectedOption === "hybrid" ? "text-purple-500" : ""
             }`}
           >
@@ -66,7 +66,7 @@ function DeploymentOptions() {
       </div>
 
       <div className="border border-white p-4">
-        <p className="text-lg">{deploymentInfo[selectedOption]}</p>
+        <p className="text-base sm:text-lg">{deploymentInfo[selectedOption]}</p>
       </div>
     </>
   );
@@ -77,18 +77,18 @@ const sections = [
     title: "Understanding Objectives and Demo Preparation",
     content: (
       <div className="text-white">
-        <p className="mb-6 text-lg">
+        <p className="mb-6 text-base sm:text-lg">
           The client provides the ANTEI Team with the necessary materials for
           demo preparation. The workflow and responsibilities are outlined as
           follows:
         </p>
 
-        <div className="flex">
+        <div className="flex flex-col sm:flex-row">
           {/* Client Column */}
-          <div className="w-1/2 border-r border-white pr-6">
-            <h3 className="text-xl font-bold mb-2">Client</h3>
+          <div className="w-full sm:w-1/2 border-r border-white pr-0 sm:pr-6 mb-6 sm:mb-0">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">Client</h3>
             <div className="w-full h-px bg-white mb-4"></div>
-            <ul className="list-none text-lg space-y-4">
+            <ul className="list-none text-base sm:text-lg space-y-4">
               <li className="flex items-center">
                 <span className="w-1 h-1 bg-white rounded-full mr-2"></span>{" "}
                 Sign the NDA
@@ -104,10 +104,10 @@ const sections = [
             </ul>
           </div>
           {/* ANTEI Column */}
-          <div className="w-1/2 pl-6">
-            <h3 className="text-xl font-bold mb-2">ANTEI</h3>
+          <div className="w-full sm:w-1/2 pl-0 sm:pl-6">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">ANTEI</h3>
             <div className="w-full h-px bg-white mb-4"></div>
-            <ul className="list-none text-lg space-y-4">
+            <ul className="list-none text-base sm:text-lg space-y-4">
               <li className="flex items-center">
                 <span className="w-1 h-1 bg-white rounded-full mr-2"></span>{" "}
                 Sign the NDA
@@ -129,7 +129,7 @@ const sections = [
   {
     title: "Contract Finalization and Commencement of Work",
     content: (
-      <p className="text-lg">
+      <p className="text-base sm:text-lg">
         Upon contract finalization and prepayment settlement, work commences.
         Once the product is developed and approved by the client, it is
         integrated into the client's systems according to the contract.
@@ -141,33 +141,45 @@ const sections = [
     icon: step3Image,
     content: (
       <div className="text-white">
-        <p className="mb-6 text-lg">
+        <p className="mb-6 text-base sm:text-lg">
           ANTEI Solutions can be integrated to any system:
         </p>
 
-        <div className="grid grid-cols-2 gap-6">
-          <div className="border-3 border-purple-500 border-dashed rounded-lg p-6 flex items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="border-3 border-purple-500 border-dashed rounded-lg p-4 sm:p-6 flex items-center">
             <img
               src={mobileAppIcon}
               alt="Mobile App"
-              className="w-10 h-10 mr-4"
+              className="w-8 h-8 sm:w-10 sm:h-10 mr-4"
             />
-            <span className="text-xl">Mobile App</span>
+            <span className="text-lg sm:text-xl">Mobile App</span>
           </div>
 
-          <div className="border-3 border-purple-500 border-dashed rounded-lg p-6 flex items-center">
-            <img src={webIcon} alt="Web" className="w-10 h-10 mr-4" />
-            <span className="text-xl">Web</span>
+          <div className="border-3 border-purple-500 border-dashed rounded-lg p-4 sm:p-6 flex items-center">
+            <img
+              src={webIcon}
+              alt="Web"
+              className="w-8 h-8 sm:w-10 sm:h-10 mr-4"
+            />
+            <span className="text-lg sm:text-xl">Web</span>
           </div>
 
-          <div className="border-3 border-purple-500 border-dashed rounded-lg p-6 flex items-center">
-            <img src={chatbotIcon} alt="Chat-bots" className="w-10 h-10 mr-4" />
-            <span className="text-xl">Chat-bots</span>
+          <div className="border-3 border-purple-500 border-dashed rounded-lg p-4 sm:p-6 flex items-center">
+            <img
+              src={chatbotIcon}
+              alt="Chat-bots"
+              className="w-8 h-8 sm:w-10 sm:h-10 mr-4"
+            />
+            <span className="text-lg sm:text-xl">Chat-bots</span>
           </div>
 
-          <div className="border-3 border-purple-500 border-dashed rounded-lg p-6 flex items-center">
-            <img src={step4Image} alt="API" className="w-10 h-10 mr-4" />
-            <span className="text-xl">API</span>
+          <div className="border-3 border-purple-500 border-dashed rounded-lg p-4 sm:p-6 flex items-center">
+            <img
+              src={step4Image}
+              alt="API"
+              className="w-8 h-8 sm:w-10 sm:h-10 mr-4"
+            />
+            <span className="text-lg sm:text-xl">API</span>
           </div>
         </div>
       </div>
@@ -178,7 +190,7 @@ const sections = [
     icon: step4Image,
     content: (
       <div className="text-white">
-        <p className="mb-6 text-lg">
+        <p className="mb-6 text-base sm:text-lg">
           At ANTEI we always strive to recommend and deploy our solutions in the
           most optimal way for our clients.
         </p>
@@ -199,29 +211,29 @@ export default function AccordionSection() {
 
   return (
     <>
-      <div className="bg-black py-10 pt-[130px] px-40 text-center">
+      <div className="bg-black py-10 pt-[130px] px-4 sm:px-40 text-center">
         {/* Gradient line */}
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
 
         {/* Heading */}
-        <h2 className="text-white text-2xl font-semibold mt-14 mb-6">
+        <h2 className="text-white text-xl sm:text-2xl font-semibold mt-14 mb-6">
           ANTEI Client Program Refers to Business Digital Transformation with
           emphasis on AI & ML Implementation
         </h2>
       </div>
 
-      <div className="bg-black text-white mx-auto text-3xl px-40">
+      <div className="bg-black text-white mx-auto text-2xl sm:text-3xl px-4 sm:px-40">
         {sections.map((section, index) => (
           <div key={index} className="border-t-2 border-yellow-500">
             <button
-              className="w-full text-left py-10 flex justify-between items-center group"
+              className="w-full text-left py-6 sm:py-10 flex justify-between items-center group"
               onClick={() => toggleSection(index)}
             >
               <span className="font-bold flex items-center">
                 {index < 2 ? (
                   <>
                     STEP {index + 1}{" "}
-                    <span className="ml-16 group-hover:text-yellow-500 transition">
+                    <span className="ml-4 sm:ml-16 group-hover:text-yellow-500 transition">
                       {section.title}
                     </span>
                   </>
@@ -230,9 +242,9 @@ export default function AccordionSection() {
                     <img
                       src={section.icon}
                       alt={`Step ${index + 1}`}
-                      className="h-10 w-10 object-contain mr-4"
+                      className="h-8 w-8 sm:h-10 sm:w-10 object-contain mr-2 sm:mr-4"
                     />
-                    <span className="ml-26 group-hover:text-yellow-500 transition">
+                    <span className="ml-2 sm:ml-26 group-hover:text-yellow-500 transition">
                       {section.title}
                     </span>
                   </>
@@ -249,9 +261,9 @@ export default function AccordionSection() {
         ))}
       </div>
       <Link to="/antei-hk/contactus">
-        <div className="flex justify-center items-center p-6 bg-black">
+        <div className="flex justify-center items-center p-4 sm:p-6 bg-black">
           <button
-            className="relative overflow-hidden border-4 text-left px-6 border-yellow-500 text-yellow-500 py-4 rounded-lg w-full max-w-7xl text-xl font-medium transition-colors duration-300"
+            className="relative overflow-hidden border-4 text-left px-4 sm:px-6 border-yellow-500 text-yellow-500 py-2 sm:py-4 rounded-lg w-full max-w-7xl text-lg sm:text-xl font-medium transition-colors duration-300"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >

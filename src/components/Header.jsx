@@ -41,7 +41,7 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-32">
         <Link
-          to="/"
+          to="/antei-hk"
           className="flex items-center space-x-2"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
