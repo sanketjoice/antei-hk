@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import deloitteLogo from "../assets/client-logos/deloitte-logo.png";
 import cybersportLogo from "../assets/client-logos/cyberport-logo.png";
@@ -17,6 +17,9 @@ import hongKongLogo from "../assets/client-logos/hongkong-a-logo.png";
 
 export default function PartnersSection() {
   const [selectedPartner, setSelectedPartner] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const carouselRef = useRef(null);
 
   const partners = [
     {
@@ -104,80 +107,154 @@ export default function PartnersSection() {
     },
   ];
 
+  // Check if viewport is mobile and update state
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Initial check
+    checkIsMobile();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIsMobile);
+
+    // Clean up event listener
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, []);
+
+  // Auto-scrolling carousel effect for mobile only
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % partners.length);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, partners.length]);
+
   const handlePartnerClick = (partner) => {
     setSelectedPartner(partner);
   };
 
   return (
-    <section className="py-16 px-40 bg-black">
+    <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-8 md:px-16 lg:px-40 bg-black">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-semibold mb-6 border-b-2 text-white border-yellow-500 inline-block">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 border-b-2 text-white border-yellow-500 inline-block">
           Our Partners
         </h2>
-        <p className="text-white mb-12">
+        <p className="text-white mb-6 sm:mb-8 md:mb-12 text-sm sm:text-base">
           We have forged extensive international partnerships with institutions
           and businesses.
         </p>
 
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-6">
-          {partners.slice(0, 10).map((partner, index) => (
+        {/* Mobile Carousel View */}
+        {isMobile && (
+          <div className="overflow-hidden mb-6" ref={carouselRef}>
             <div
-              key={index}
-              className="relative group cursor-pointer"
-              onClick={() => handlePartnerClick(partner)}
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
-              <div className="bg-white p-4 rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={partner.logo}
-                  className="w-full h-20 object-contain"
-                />
-              </div>
-              <div className="absolute inset-0 bg-purple-600 bg-opacity-30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                <span className="text-white font-semibold">Read More</span>
-              </div>
+              {partners.map((partner, index) => (
+                <div
+                  key={index}
+                  className="min-w-full flex justify-center"
+                  onClick={() => handlePartnerClick(partner)}
+                >
+                  <div className="bg-white p-4 rounded-2xl shadow-md w-64 cursor-pointer relative group">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="w-full h-20 object-contain"
+                    />
+                    <div className="absolute inset-0 bg-purple-600 bg-opacity-30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+                      <span className="text-white text-base font-semibold">
+                        Read More
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
-        {/* Last Row Centered */}
-        <div className="flex justify-center gap-6 mt-6">
-          {partners.slice(10).map((partner, index) => (
-            <div
-              key={index}
-              className="relative group cursor-pointer"
-              onClick={() => handlePartnerClick(partner)}
-            >
-              <div className="bg-white p-4 rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={partner.logo}
-                  className="w-full h-20 object-contain"
-                />
-              </div>
-              <div className="absolute inset-0 bg-purple-600 bg-opacity-30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                <span className="text-white font-semibold">Read More</span>
-              </div>
+        {/* Desktop Grid View (Hidden on Mobile) */}
+        {!isMobile && (
+          <>
+            {/* Main grid of partner logos */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+              {partners.slice(0, 10).map((partner, index) => (
+                <div
+                  key={index}
+                  className="relative group cursor-pointer"
+                  onClick={() => handlePartnerClick(partner)}
+                >
+                  <div className="bg-white p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl md:rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="w-full h-12 sm:h-16 md:h-20 object-contain"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-purple-600 bg-opacity-30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+                    <span className="text-white text-xs sm:text-sm md:text-base font-semibold">
+                      Read More
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            {/* Last Row Centered - adjust for different screen sizes */}
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4 md:mt-6">
+              {partners.slice(10).map((partner, index) => (
+                <div
+                  key={index}
+                  className="relative group cursor-pointer"
+                  onClick={() => handlePartnerClick(partner)}
+                >
+                  <div className="bg-white p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl md:rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="w-full h-12 sm:h-16 md:h-20 object-contain"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-purple-600 bg-opacity-30 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+                    <span className="text-white text-xs sm:text-sm md:text-base font-semibold">
+                      Read More
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
-      <p className="text-white mt-6">Among many others...</p>
+      <p className="text-white mt-4 sm:mt-6 text-sm sm:text-base text-center sm:text-left">
+        Among many others...
+      </p>
 
-      {/* Partner Detail Modal */}
+      {/* Partner Detail Modal - made responsive */}
       {selectedPartner && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-8 max-w-4xl mx-auto relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+          <div className="bg-white rounded-lg p-4 sm:p-6 md:p-8 w-full max-w-xs sm:max-w-md md:max-w-4xl mx-auto relative">
             <button
               onClick={() => setSelectedPartner(null)}
-              className="absolute text-purple-500 top-4 right-4 font-bold text-4xl"
+              className="absolute text-purple-500 top-2 sm:top-4 right-2 sm:right-4 font-bold text-2xl sm:text-4xl"
             >
               ×
             </button>
             <img
               src={selectedPartner.logo}
               alt={selectedPartner.name}
-              className="w-72 mx-auto mb-6 object-contain justify-center self-center items-center py-20"
+              className="w-36 sm:w-48 md:w-72 mx-auto mb-4 sm:mb-6 object-contain justify-center self-center items-center py-4 sm:py-8 md:py-20"
             />
-            <p className="text-center text-black mb-4">
+            <p className="text-center text-black text-sm sm:text-base mb-2 sm:mb-4">
               {selectedPartner.description}
             </p>
           </div>
