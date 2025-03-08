@@ -211,27 +211,27 @@ export default function AccordionSection() {
 
   return (
     <>
-      <div className="bg-black py-10 pt-[130px] px-4 sm:px-40 text-center">
+      <div className="bg-black px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw] py-10 pt-[130px] text-center">
         {/* Gradient line */}
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
 
         {/* Heading */}
-        <h2 className="text-white text-xl sm:text-2xl font-semibold mt-14 mb-6">
+        <h2 className="text-white text-lg sm:text-2xl font-semibold mt-14 mb-6">
           ANTEI Client Program Refers to Business Digital Transformation with
           emphasis on AI & ML Implementation
         </h2>
       </div>
 
-      <div className="bg-black text-white mx-auto text-2xl sm:text-3xl px-4 sm:px-40">
+      <div className="bg-black text-white px-4 sm:px-8 md:px-12 lg:px-[10vw] xl:px-[10vw] 2xl:px-[12vw] mx-auto text-2xl sm:text-3xl">
         {sections.map((section, index) => (
           <div key={index} className="border-t-2 border-yellow-500">
             <button
               className="w-full text-left py-6 sm:py-10 flex justify-between items-center group"
               onClick={() => toggleSection(index)}
             >
-              <span className="font-bold flex items-center">
+              <span className="font-bold flex  items-center">
                 {/* Mobile view - only show titles */}
-                <span className="sm:hidden group-hover:text-yellow-500 transition">
+                <span className="sm:hidden py-6  group-hover:text-yellow-500 transition">
                   {section.title}
                 </span>
 
@@ -250,26 +250,26 @@ export default function AccordionSection() {
                       alt={`Step ${index + 1}`}
                       className="h-10 w-10 object-contain mr-4"
                     />
-                    <span className="group-hover:text-yellow-500 lg:ml-26 transition">
+                    <span className="group-hover:text-yellow-500 lg:ml-20 transition">
                       {section.title}
                     </span>
                   </span>
                 )}
               </span>
-              <span className="text-white">
+              <span className="text-white text-2xl sm:text-3xl pl-6">
                 {openIndex === index ? "−" : "+"}
               </span>
             </button>
             {openIndex === index && (
-              <div className="p-4">{section.content}</div>
+              <div className="p-4 sm:p-6">{section.content}</div>
             )}
           </div>
         ))}
       </div>
       <Link to="/antei-hk/contactus">
-        <div className="flex justify-center items-center p-4 sm:p-6 bg-black">
+        <div className="flex justify-center items-center p-4 sm:p-8 bg-black">
           <button
-            className="relative overflow-hidden border-4 text-left px-4 sm:px-6 border-yellow-500 text-yellow-500 py-2 sm:py-4 rounded-lg w-full max-w-7xl text-lg sm:text-xl font-medium transition-colors duration-300"
+            className="relative overflow-hidden border-4 text-left px-6 sm:px-8 border-yellow-500 text-yellow-500 py-2 sm:py-4 rounded-lg w-full max-w-7xl text-lg sm:text-xl font-medium transition-colors duration-300"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >

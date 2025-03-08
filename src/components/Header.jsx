@@ -31,11 +31,11 @@ const Header = () => {
 
   return (
     <header
-      className={`text-white fixed max-w-[1660px] m-auto top-0 z-50 w-full transition-all duration-300 ${
+      className={`text-white fixed top-0  z-50 min-w-screen transition-all duration-300 ${
         scrolled ? "py-2 backdrop-blur-sm bg-black/30" : "pt-2 bg-transparent"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-32">
+      <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
         <Link
           to="/antei-hk"
           className="flex items-center space-x-2"

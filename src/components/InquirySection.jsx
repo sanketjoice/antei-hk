@@ -50,7 +50,7 @@ const InquirySection = () => {
   return (
     <>
       {/* Desktop view */}
-      <div className="bg-black py-10 pt-[130px] px-40 text-center md:block hidden">
+      <div className="bg-black py-10 pt-[130px] text-center md:block hidden px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
         <h2 className="text-white text-3xl font-semibold mt-20">
           Choose the most suitable model for your business

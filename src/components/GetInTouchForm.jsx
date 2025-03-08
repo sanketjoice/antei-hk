@@ -43,7 +43,7 @@ const GetInTouchForm = () => {
 
   return (
     <>
-      <div className="bg-black py-10 pt-[130px] px-6 md:px-40">
+      <div className="bg-black py-10 pt-[130px] px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
         {/* Gradient line */}
         <div className="w-full h-2 bg-gradient-to-r from-purple-700 via-purple-500 to-orange-400"></div>
 
@@ -53,7 +53,7 @@ const GetInTouchForm = () => {
         </h2>
       </div>
 
-      <div className="bg-black text-white py-12 px-6 md:px-24">
+      <div className="bg-black text-white py-12 px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
         {/* User Type Selection */}
         <div className="flex flex-wrap px-6 md:px-16 space-x-6 md:space-x-20 mb-8">
           {userTypes.map((type) => (

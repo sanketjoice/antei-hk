@@ -26,7 +26,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-[#808080] py-8 md:px-40 px-6">
-      <div className="container mx-auto flex flex-col items-center space-y-6">
+      <div className=" mx-auto flex flex-col items-center space-y-6">
         {/* Top Section */}
         <div
           className={`${

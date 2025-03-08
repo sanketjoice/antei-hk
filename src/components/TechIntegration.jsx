@@ -10,7 +10,7 @@ const images = [image1, image2, image3, image4, image5, image6];
 
 const TechIntegration = () => {
   return (
-    <div className="bg-black text-white py-8 px-4 sm:py-10 sm:px-6 md:py-12 md:px-16 lg:px-36">
+    <div className="bg-black text-white py-8 px-4 sm:py-10  md:py-12  xl:px-[8vw] 2xl:px-[10vw]">
       {/* Heading */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 sm:mb-8 md:mb-12 border-b-2 border-yellow-500 inline-block">
         Technologies & System Integration

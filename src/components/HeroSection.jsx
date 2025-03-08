@@ -80,7 +80,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="relative overflow-hidden h-auto text-white flex flex-col items-center py-22 lg:py-52 px-4 sm:px-6 md:px-10 lg:px-32"
+      className="relative overflow-hidden justify-center text-center min-h-screen text-white flex flex-col items-center py-22 px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw] lg:py-52 "
       style={{
         background: "rgb(2, 1, 4)",
       }}
@@ -145,8 +145,8 @@ const HeroSection = () => {
           <div
             className="absolute"
             style={{
-              width: "350px",
-              height: "350px",
+              width: "600px",
+              height: "600px",
               background:
                 "radial-gradient(circle, rgba(180, 120, 255, 0.8) 0%, rgba(130, 70, 230, 0.5) 50%, rgba(81, 34, 162, 0.2) 80%, transparent 100%)",
               filter: "blur(40px)",

@@ -28,35 +28,39 @@ const RecentResearch = () => {
     return 0;
   };
 
+  const goToPrevious = () => {
+    setActiveIndex(
+      (activeIndex - 1 + researchData.length) % researchData.length
+    );
+  };
+
+  const goToNext = () => {
+    setActiveIndex((activeIndex + 1) % researchData.length);
+  };
+
   return (
-    <div className="bg-black px-4 sm:px-12 md:px-36 text-white py-8 md:py-12 text-cer">
+    <div className="bg-black px-4 sm:px-12 md:px-36 text-white py-8 md:py-12 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
       <h2 className="text-2xl md:text-4xl font-semibold mb-6 md:mb-12 border-b-2 border-yellow-500 inline-block">
         Recent Research
       </h2>
 
-      {/* Mobile-only navigation controls */}
-      <div className="flex justify-center gap-4 mb-4 md:hidden">
+      <div className="relative flex justify-center items-center overflow-hidden mt-4 md:mt-8 h-64 md:h-96">
+        {/* Left Arrow - Positioned on left side of image */}
         <button
-          className="bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
-          onClick={() =>
-            setActiveIndex(
-              (activeIndex - 1 + researchData.length) % researchData.length
-            )
-          }
+          className="absolute left-0 md:left-16 z-30 bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+          onClick={goToPrevious}
         >
           &lt;
         </button>
+
+        {/* Right Arrow - Positioned on right side of image */}
         <button
-          className="bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
-          onClick={() =>
-            setActiveIndex((activeIndex + 1) % researchData.length)
-          }
+          className="absolute right-0 md:right-16 z-30 bg-purple-600 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center"
+          onClick={goToNext}
         >
           &gt;
         </button>
-      </div>
 
-      <div className="relative flex justify-center items-center overflow-hidden mt-4 md:mt-8 h-64 md:h-96">
         {researchData.map((item, index) => {
           const isActive = index === activeIndex;
           const position = getPosition(index);
@@ -86,7 +90,7 @@ const RecentResearch = () => {
                 alt={item.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0  bg-opacity-50 flex flex-col justify-start p-4">
+              <div className="absolute inset-0 bg-opacity-50 flex flex-col justify-start p-4">
                 <h3 className="text-lg md:text-xl font-bold">{item.title}</h3>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {item.tags.map((tag, i) => (

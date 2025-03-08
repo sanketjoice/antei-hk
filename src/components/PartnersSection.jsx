@@ -141,7 +141,7 @@ export default function PartnersSection() {
   };
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 px-4 sm:px-8 md:px-16 lg:px-40 bg-black">
+    <section className="py-8 sm:py-12 md:py-16  bg-black px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
       <div className="container mx-auto">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 sm:mb-6 border-b-2 text-white border-yellow-500 inline-block">
           Our Partners

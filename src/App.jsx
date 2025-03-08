@@ -60,7 +60,7 @@ const ClientsPage = () => (
 
 function App() {
   return (
-    <div className="max-w-[1660px] m-auto">
+    <div className="">
       <Router>
         <ScrollToTop />
         <Header />

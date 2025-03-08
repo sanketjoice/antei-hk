@@ -28,7 +28,7 @@ export default function ConsultingSection() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center bg-black text-white p-4 sm:p-6 md:p-8 lg:p-10 md:pl-8 lg:pl-[140px]">
+    <div className="flex flex-col md:flex-row items-center px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw] bg-black text-white p-4 sm:p-6 md:p-8 lg:p-10 md:pl-8 lg:pl-[140px]">
       {/* Left Side - Title and List */}
       <div className="w-full md:w-1/2 mb-6 md:mb-0">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 md:mb-6">

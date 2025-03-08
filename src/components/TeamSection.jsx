@@ -57,7 +57,7 @@ export default function TeamSection() {
   const [selectedTeam, setSelectedTeam] = useState(teamData[0]);
 
   return (
-    <div className="flex flex-col lg:flex-row items-start gap-10 pt-16 p-4 md:p-10 lg:pl-32 bg-black text-white">
+    <div className="flex flex-col lg:flex-row items-start px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw] gap-10 pt-16 p-4 md:p-10 lg:pl-32 bg-black text-white">
       {/* Left Side: Team Categories */}
       <div className="flex flex-col gap-4 w-full lg:w-1/3">
         <h2 className="text-3xl md:text-4xl font-semibold mb-0">Our Team</h2>
