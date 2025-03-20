@@ -31,36 +31,62 @@ const Header = () => {
 
   return (
     <header
-      className={`text-white fixed top-0  z-50 min-w-screen transition-all duration-300 ${
-        scrolled ? "py-2 backdrop-blur-sm bg-black/30" : "pt-2 bg-transparent"
+      className={`text-white fixed top-0 z-50 min-w-screen transition-all duration-300 ${
+        scrolled ? "py-4 backdrop-blur-sm bg-black/30" : "pt-6 bg-transparent"
       }`}
     >
       <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-[5vw] xl:px-[8vw] 2xl:px-[10vw]">
-        <Link
-          to="/antei-hk"
-          className="flex items-center space-x-2"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div
-            className={`transition-transform duration-500 ${
-              isHovered ? "rotate-y-180" : "rotate-y-0"
-            }`}
+        {/* Fixed-width container to prevent layout shifts */}
+        <div className="flex items-center" style={{ minWidth: "150px" }}>
+          <Link
+            to="/antei-hk"
+            className="flex items-center justify-center relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <img
-              src={logo}
-              alt="ANTEI Logo"
-              className="w-[40px] sm:w-[50px] md:w-[70px] lg:w-[80px]"
-            />
-          </div>
-          <img
-            src={nameLogo}
-            alt="ANTEI Name"
-            className={`hidden sm:block w-[100px] md:w-[120px] lg:w-[150px] transition-opacity duration-500 ${
-              isHovered ? "opacity-100" : "opacity-0 w-0"
-            }`}
-          />
-        </Link>
+            <div className="flex items-center justify-center relative">
+              {/* Logo container with rotating animation */}
+              <div
+                className="absolute left-0 top-1/2 transform -translate-y-1/2"
+                style={{
+                  width: isHovered ? "100%" : "0%",
+                  overflow: "hidden",
+                  transition: "width 800ms ease-in-out",
+                  transformOrigin: "left center",
+                }}
+              >
+                <img
+                  src={logo}
+                  alt="ANTEI Logo"
+                  className="w-[40px] sm:w-[50px] md:w-[70px] lg:w-[80px]"
+                  style={{
+                    transform: isHovered ? "rotateY(180deg)" : "rotateY(0deg)",
+                    transition:
+                      "transform 1200ms ease-in-out, opacity 800ms ease-in-out",
+                    transformOrigin: "center center",
+                    opacity: isHovered ? "1" : "0",
+                  }}
+                />
+              </div>
+
+              {/* Spacer to maintain layout when logo appears */}
+              <div
+                className={`${
+                  isHovered
+                    ? "w-[40px] sm:w-[50px] md:w-[70px] lg:w-[80px] mr-2"
+                    : "w-0"
+                } transition-all duration-500`}
+              ></div>
+
+              {/* Name logo - always visible */}
+              <img
+                src={nameLogo}
+                alt="ANTEI Name"
+                className="block w-[100px] md:w-[120px] lg:w-[150px]"
+              />
+            </div>
+          </Link>
+        </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-4 lg:space-x-8">

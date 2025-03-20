@@ -18,6 +18,7 @@ import GetInTouchForm from "./components/GetInTouchForm";
 import ClientsHeroSection from "./components/ClientsHeroSection";
 import AccordionSection from "./components/AccordionSection";
 import ScrollToTop from "./components/ScrollToTop";
+import PartnerLogoCarousel from "./components/PartnerLogoCarousel";
 
 // Create page components
 const HomePage = () => (
@@ -29,6 +30,7 @@ const HomePage = () => (
     <ConsultingSection />
     <TechIntegration />
     <RecentResearch />
+    <PartnerLogoCarousel />
     <PartnersSection />
     <Footer />
   </>
